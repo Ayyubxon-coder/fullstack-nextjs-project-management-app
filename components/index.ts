@@ -4,3 +4,4 @@ export * from './Card';
 export * from './Input';
 export * from './SidebarLink';
 export * from './Sidebar';
+export * from './AuthForm';

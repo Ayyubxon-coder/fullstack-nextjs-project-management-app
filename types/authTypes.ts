@@ -12,4 +12,7 @@ export interface IRegisterUser {
 }
 export interface ISigninUser extends IRegisterUser {}
 export interface IFormState extends IRegisterUser {}
-export interface CreateJWTUser extends IRegisterUser {}
+export interface ICreateJWTUser {
+  id: string;
+  email: string;
+}

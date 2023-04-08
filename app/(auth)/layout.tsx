@@ -1,26 +1,16 @@
-import '@/styles/global.css';
+import '../../styles/global.css'
+import GlassPane from "@/components/GlassPane";
 
-import { GlassPane } from '@/components';
-import { Inter } from 'next/font/google';
-import { ReactNode } from 'react';
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-});
-interface AuthRootLayoutProps {
-  children: ReactNode;
-}
-
-export default function AuthRootLayout({ children }: AuthRootLayoutProps) {
+export default function AuthRootLayout({children}) {
   return (
-    <html lang='en' className={inter.variable}>
+    <html lang="en">
       <head />
-      <body className='h-screen w-screen rainbow-mesh p-6'>
-        <GlassPane className='w-full h-full flex items-center justify-center'>
+      <body className="h-screen w-screen rainbow-mesh p-6">
+        <GlassPane
+          className="w-full h-full flex items-center justify-center">
           {children}
         </GlassPane>
       </body>
     </html>
-  );
+  )
 }

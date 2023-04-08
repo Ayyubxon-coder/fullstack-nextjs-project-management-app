@@ -1,6 +1,7 @@
-import AuthForm from '@/components/AuthForm';
-const Register = () => {
-  return <AuthForm mode='register' />;
-};
+import AuthForm from "@/components/Authform"
 
-export default Register;
+export default function Register() {
+  return <div>
+    <AuthForm mode="register"/>
+  </div>
+}

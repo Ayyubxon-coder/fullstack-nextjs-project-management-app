@@ -1,19 +1,23 @@
-import '@/styles/global.css'
-import GlassPane from "@/components/GlassPane";
-import Sidebar from '@/components/Sidebar';
+import '@/styles/global.css';
+import { GlassPane, Sidebar } from '@/components';
+import { ReactNode } from 'react';
+interface DashboardRootLayoutProps {
+  children: ReactNode;
+}
 
-export default function DashboardRootLayout({children}) {
+export default function DashboardRootLayout({
+  children,
+}: DashboardRootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <head />
-      <body className="h-screen w-screen candy-mesh p-6">
-        <GlassPane
-          className="w-full h-full flex items-center">
+      <body className='h-screen w-screen candy-mesh p-6'>
+        <GlassPane className='w-full h-full flex items-center'>
           <Sidebar />
           {children}
         </GlassPane>
-        <div id="modal"></div>
+        <div id='modal'></div>
       </body>
     </html>
-  )
+  );
 }

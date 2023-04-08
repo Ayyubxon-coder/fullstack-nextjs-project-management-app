@@ -23,7 +23,7 @@ const getData = async () => {
 };
 
 interface TaskCardProps {
-  tasks: any[];
+  tasks?: any[];
   title?: string;
 }
 

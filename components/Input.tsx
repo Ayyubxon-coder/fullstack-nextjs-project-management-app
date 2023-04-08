@@ -4,6 +4,7 @@ import { InputHTMLAttributes } from 'react';
 interface InputProps {
   className?: string;
   props?: InputHTMLAttributes<HTMLInputElement>;
+  required?: boolean;
 }
 export const Input = ({ className, ...props }: InputProps) => {
   return (

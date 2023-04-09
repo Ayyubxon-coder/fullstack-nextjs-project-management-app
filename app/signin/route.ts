@@ -1,13 +1,9 @@
 import { comparePasswords, createJWT } from '@/lib/auth';
 import { db } from '@/lib/db';
-import { User } from '@prisma/client';
 import { serialize } from 'cookie';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function signin(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export async function POST(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const user = await db.user.findUnique({
       where: {
@@ -30,7 +26,7 @@ export default async function signin(
         })
       );
       res.status(201);
-      res.json({});
+      res.json({ message: 'Successfully signed!' });
     }
     res.status(401);
     res.json({});

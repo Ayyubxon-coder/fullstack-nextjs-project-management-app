@@ -34,7 +34,6 @@ export const AuthForm = ({ mode }: AuthFormProps) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-
     try {
       if (mode === 'register') {
         await register(formState);

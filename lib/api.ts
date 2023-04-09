@@ -35,11 +35,11 @@ interface AuthType {
 }
 
 export const register = (user: AuthType): Promise<any> => {
-  return fetcher({ url: '/api/register', method: 'POST', body: user });
+  return fetcher({ url: '/register', method: 'POST', body: user });
 };
 
 export const signin = (user: AuthType): Promise<any> => {
-  return fetcher({ url: '/api/signin', method: 'POST', body: user });
+  return fetcher({ url: '/signin', method: 'POST', body: user });
 };
 
 export const createNewProject = async (name: string): Promise<any> => {

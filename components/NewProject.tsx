@@ -1,10 +1,10 @@
 'use client';
 
 import { createNewProject } from '@/lib/api';
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { Input, Button } from '@/components';
 import Modal from 'react-modal';
-Modal.setAppElement('#modal');
+// Modal.setAppElement('#modal');
 
 export const NewProject = () => {
   const [isModalOpen, setIsOpen] = useState(false);
@@ -12,7 +12,7 @@ export const NewProject = () => {
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await createNewProject(name);
     closeModal();
@@ -33,7 +33,9 @@ export const NewProject = () => {
           <Input
             placeholder='project name'
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setName(e.target.value)
+            }
           />
           <Button type='submit'>Create</Button>
         </form>

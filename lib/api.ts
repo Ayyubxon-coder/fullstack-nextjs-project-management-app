@@ -1,37 +1,52 @@
-export const fetcher = async ({url, method, body, json = true}) => {
+import { User } from '@prisma/client';
+
+interface IFetcher {
+  url: string;
+  method: 'POST' | 'GET' | 'PUT' | 'PATCH';
+  body: User | { name: string } | AuthType;
+  json?: boolean;
+}
+export const fetcher = async ({ url, method, body, json = true }: IFetcher) => {
   const res = await fetch(url, {
     method,
-    ...(body && {body: JSON.stringify(body)}),
+    ...(body && { body: JSON.stringify(body) }),
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'application/json'
-    }
-  })
+      'Content-Type': 'application/json',
+    },
+  });
 
   if (!res.ok) {
     // handle your errors
-    throw new Error('API error')
+    throw new Error('API error');
   }
 
   if (json) {
-    const data = await res.json()
-    return data.data
+    const data = await res.json();
+    return data.data;
   }
+};
+
+interface AuthType {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
 }
 
-export const register = (user) => {
-  return fetcher({url: '/api/register', method: 'post', body: user})
-}
+export const register = (user: AuthType): Promise<any> => {
+  return fetcher({ url: '/api/register', method: 'POST', body: user });
+};
 
-export const signin = (user) => {
-  return fetcher({url: '/api/signin', method: 'post', body: user})
-}
+export const signin = (user: AuthType): Promise<any> => {
+  return fetcher({ url: '/api/signin', method: 'POST', body: user });
+};
 
-export const createNewProject = async (name) => {
+export const createNewProject = async (name: string): Promise<any> => {
   return fetcher({
     url: '/api/project',
     method: 'POST',
-    body: {name},
-    json: true
-  })
-}
+    body: { name },
+    json: true,
+  });
+};

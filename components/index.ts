@@ -4,7 +4,6 @@ export * from './Card';
 export * from './Input';
 export * from './SidebarLink';
 export * from './Sidebar';
-export * from './AuthForm';
 export * from './GreetingsSkeleton';
 export * from './ProjectCard';
 export * from './Input';

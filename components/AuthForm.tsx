@@ -28,7 +28,7 @@ type AuthFormProps = {
   mode: 'register' | 'signin';
 };
 
-const AuthForm = ({ mode }: AuthFormProps) => {
+export const AuthForm = ({ mode }: AuthFormProps) => {
   const [formState, setFormState] = useState({ ...initial });
   const router = useRouter();
 
@@ -138,5 +138,3 @@ const AuthForm = ({ mode }: AuthFormProps) => {
     </Card>
   );
 };
-
-export default AuthForm;

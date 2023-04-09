@@ -16,14 +16,14 @@ export default async function signin(
     });
 
     console.log(req.body.password, user?.password);
-    const isUser = await comparePasswords(req.body.password, user?.password);
+    const isUser = await comparePasswords(req.body.password, user?.password!);
 
     if (isUser && user) {
       const jwt = await createJWT(user);
 
       res.setHeader(
         'Set-Cookie',
-        serialize(process.env.COOKIE_NAME, jwt, {
+        serialize(process.env.COOKIE_NAME as string, jwt, {
           httpOnly: true,
           path: '/',
           maxAge: 60 * 60 * 24 * 7,

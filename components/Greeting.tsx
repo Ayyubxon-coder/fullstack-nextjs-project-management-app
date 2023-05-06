@@ -9,7 +9,7 @@ const getData = async () => {
   return user;
 };
 
-export const Greeting = async () => {
+export const Greeting = async (): Promise<JSX.Element> => {
   const user = await getData();
 
   return (

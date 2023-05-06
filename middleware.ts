@@ -25,16 +25,16 @@ export default async function middleware(req: any, res: any) {
   }
   const jwt = req.cookies.get(process.env.COOKIE_NAME);
 
-  // if (!jwt) {
-  //   req.nextUrl.pathname = '/signin';
-  //   return NextResponse.redirect(req.nextUrl);
-  // }
+  if (!jwt) {
+    req.nextUrl.pathname = '/signin';
+    return NextResponse.redirect(req.nextUrl);
+  }
 
   try {
     await verifyJWT(jwt.value);
     return NextResponse.next();
   } catch (e) {
-    // req.nextUrl.pathname = '/signin';
+    req.nextUrl.pathname = '/signin';
     return NextResponse.redirect(req.nextUrl);
   }
 }
